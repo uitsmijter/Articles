@@ -1,0 +1,9 @@
+/_vendor
+public/
+resources/
+node_modules/
+
+.DS_store
+.hugo_build.lock
+.DS_Store
+static/fonts/**/*.wof*

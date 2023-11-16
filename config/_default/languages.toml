@@ -1,0 +1,10 @@
+# toml-docs-start lang-main
+[en]
+    languageName = "English"
+    contentDir = "content"
+    weight = 1
+# toml-docs-end lang-main
+# toml-docs-start lang-param
+    [en.params.head]
+        tagline = "Articles"
+# toml-docs-end lang-param

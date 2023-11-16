@@ -1,0 +1,69 @@
+name: Main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Install Modules
+        shell: 'bash'
+        run: |
+          npm install
+          
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.120.4'
+          extended: true
+
+      - name: Build Fonts
+        shell: 'script -q -e -c "bash --noprofile --norc -eo pipefail {0}"'
+        run: |
+          for TTF in $(ls ./static/fonts/{Bebas_Neue,Inconsolata,Inconsolata/**,Source_Sans_Pro,Playfair_Display}/*.ttf); do
+            docker run --rm -v ${PWD}:/build ghcr.io/uitsmijter/font-processor ${TTF};
+          done;
+          
+      - name: Build Pages
+        shell: 'bash'
+        run: |
+          hugo --gc --minify --verbose 
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
+
+  # Notify
+  notify_mattermost:
+    name: Notify Mattermost
+    permissions:
+      contents: read
+      statuses: read
+      actions: read
+      repository-projects: read
+    needs:
+      - build
+    if: always()
+    uses: uitsmijter/workflows/.github/workflows/builds-mattermost.yaml@main
+    secrets:
+      WEBHOOK: ${{ secrets.MATTERMOST_WEBHOOK_BUILD }}
+

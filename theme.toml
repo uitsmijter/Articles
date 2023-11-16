@@ -1,0 +1,12 @@
+name = "Uitsmijter Articles"
+license = "MIT"
+licenselink = "https://github.com/uitsmijter/articles-templates"
+description = "Blog templates based on gethinode.com"
+homepage = "https://uitsmijter.io"
+tags = ["blog"]
+features = []
+min_version = "0.120.0"
+
+[author]
+  name = "Uitsmijter | aus der Technik"
+  homepage = "https://uitsmijter.io"
