@@ -13,7 +13,7 @@
 [[main]]
   name = "RSS"
   #pre = "fa square-rss"
-  pageRef = "/index.xml"
+  pageRef = "https://articles.uitsmijter.io/index.xml"
   weight = 30  
 
 [[social]]
