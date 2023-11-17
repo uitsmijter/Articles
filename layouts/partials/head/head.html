@@ -20,4 +20,5 @@
     {{ if gt (len .Site.Languages) 1}}
     <meta name="lang" content="{{ .Site.Language }}">
     {{ end }}
+    {{ partial "head/matomo.html" . }}
 {{ end }}
