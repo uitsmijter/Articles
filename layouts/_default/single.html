@@ -63,9 +63,14 @@
             </div>    
         {{ end -}}
     </div>
-    
-	<!--
-	    {{ partial "partials/comments/discourse.html" . }}
+
+    <!--
+    <div class="container-xxl flex-fill p-4 px-xxl-0">
+        <div class="row row-cols-1 row-cols-{{ $breakpoint.current }}-2 row-cols-{{ $breakpoint.next }}-3">
+            <div class="col col-{{ $breakpoint.next }}-2 d-none d-{{ $breakpoint.next }}-block sidebar-overflow sticky-top pt-5">
+	            {{ partial "partials/comments/discourse.html" . }}
+            </div>
+        </div>
+    </div>
     -->
-    
 {{ end -}}
