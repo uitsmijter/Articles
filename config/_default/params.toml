@@ -200,6 +200,7 @@
     locale = "en_US"
 
 [comments]
+	discourseUrl = "https://discourse.uitsmijter.io/"
     enabled = false
     repo = "" # Replace with your repository.
     #issueTerm = "pathname" # pathname, url, title, og:title
