@@ -47,6 +47,9 @@
                 </div>
                 <div class="col-12 col-{{ $breakpoint.current }}-9 col-{{ $breakpoint.next }}-8 mb-5 p-4">
                     {{ partial "partials/single-main.html" . }}
+                    <div class="comments" style="border: 1px solid green;">
+                        {{ partial "partials/comments/discourse.html" . }}
+                    </div>
                 </div>
                 <div class="col col-{{ $breakpoint.current }}-3 col-{{ $breakpoint.next }}-2 d-none d-{{ $breakpoint.current }}-block pt-5">
                     {{ $toc | safeHTML }}
