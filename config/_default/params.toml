@@ -47,7 +47,7 @@
 
 # toml-docs-start home
 [home]
-    # sections = ["posts"]
+    sections = ["articles"]
     fullCover = false
     centerHeadline = false
     style = ""
@@ -93,11 +93,12 @@
     icon = "fab linkedin"
     weight = 10
 
-[[sharing.providers]]
-    name = "Twitter"
-    url = "https://twitter.com/home?status={url}"
-    icon = "fab x-twitter"
-    weight = 20
+# Twitter/X removed
+# [[sharing.providers]]
+#     name = "Twitter"
+#     url = "https://twitter.com/home?status={url}"
+#     icon = "fab x-twitter"
+#     weight = 20
 
 [[sharing.providers]]
     name = "Mastodon"
@@ -127,21 +128,21 @@
 # toml-docs-end sharing
 
 # toml-docs-start sections
-# [sections]
-#     [sections.posts]
-#         title = "Posts"
-#         sort = "date"
-#         reverse = true
-#         nested = true
-#         cols = 3
-#         color = ""
-#         padding = "0"
-#         header = "full"
-#         footer = "none"
-#         orientation = "stacked"
-#         style = "border-0 card-zoom card-body-margin"
-#         homepage = 3
-#         separator = true
+[sections]
+    [sections.articles]
+        title = "Articles"
+        sort = "date"
+        reverse = true
+        nested = true
+        cols = 3
+        color = ""
+        padding = "0"
+        header = "full"
+        footer = "none"
+        orientation = "stacked"
+        style = "border-0 card-zoom card-body-margin"
+        homepage = 3
+        separator = true
 # toml-docs-end sections
 
 [favicon]

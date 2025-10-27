@@ -55,7 +55,9 @@
     {{- with (index site.Params.sections $section) -}}
         {{- with index . "reference" }}{{ $moreTitle = . }}{{ end -}}
     {{- end -}}
-    {{- $moreTitle = or $moreTitle (printf (T "more" (pluralize $sectionTitle))) -}}
+    {{- if $sectionTitle -}}
+        {{- $moreTitle = or $moreTitle (printf (T "more" (pluralize $sectionTitle))) -}}
+    {{- end -}}
 
     {{- $sectionContent := trim (partial "assets/section-list.html" (dict 
         "page" $page 
