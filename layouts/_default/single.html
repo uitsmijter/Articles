@@ -2,14 +2,82 @@
     {{- $breakpoint := $.Scratch.Get "breakpoint" -}}
     {{ if .Site.Params.navigation.breadcrumb }}{{ partial "assets/breadcrumb.html" . }}{{ end -}}
 
-    {{ .Render "single/header" }}
+    {{/* Inline header content */}}
+    {{- $metadata := "full" -}}
+    {{ if isset .Params "metadata" }}
+        {{ $metadata = .Params.metadata }}
+    {{ else }}
+        {{- with (index site.Params.pages .Type ) -}}
+            {{ if isset . "metadata" }}{{ $metadata = (index . "metadata") }}{{ end }}
+        {{- end -}}
+    {{ end }}
+    {{ with .Title }}<p class="display-4 mt-5">{{ . }}</p>{{ end }}
+    {{ if ne $metadata "none" }}
+        {{ $lastmodstr := (partial "utilities/date.html" (dict "date" .Lastmod "format" "long")) -}}
+        {{ $datestr := (partial "utilities/date.html" (dict "date" .Date "format" "long")) -}}
+        <small class="text-body-secondary text-uppercase">
+            {{ $datestr | i18n "postedOnDate" -}}
+            {{ if eq $metadata "full" }}
+                {{ if ne $datestr $lastmodstr -}}&nbsp;({{ $lastmodstr | i18n "lastModified" }}){{ end }}
+            {{ end }}
+            &bull;
+            {{ .ReadingTime | lang.FormatNumber 0 }}&nbsp;{{ i18n "minutesShort" }} {{ i18n "read" }} &bull;
+            {{ .WordCount | lang.FormatNumber 0 }}&nbsp;{{ i18n "words" }}
+        </small>
+    {{ end }}
+    {{- if gt (len (.GetTerms "tags")) 0 -}}
+        <div class="mt-3">
+            <div class="d-none-dark">
+                <div class="hstack gap-1">
+                    {{ range (.GetTerms "tags") -}}
+                        {{- $url := (path.Join .Page.RelPermalink) | relLangURL -}}
+                        {{ partial "assets/button.html" (dict "href" $url "title" .LinkTitle "color" "light" "size" "sm") }}
+                    {{ end -}}
+                </div>
+            </div>
+            <div class="d-none-light">
+                <div class="hstack gap-1">
+                    {{ range (.GetTerms "tags") -}}
+                        {{- $url := (path.Join .Page.RelPermalink) | relLangURL -}}
+                        {{ partial "assets/button.html" (dict "href" $url "title" .LinkTitle "color" "primary" "size" "sm" "outline" "true") }}
+                    {{ end -}}
+                </div>
+            </div>
+        </div>
+    {{- end -}}
+    {{ partial "assets/sharing.html" . }}
+    <p class="lead mb-5 mt-3">{{ .Description }}</p>
 
     {{- if and .Site.Params.navigation.toc .Params.includeToc | default true -}}
         <div class="d-{{ $breakpoint.current }}-none pb-5">{{ partial "assets/toc-dropdown.html" . }}</div>
     {{- end -}}
-    {{ .Render "single/body" }}
 
-    {{ .Render "single/footer" }}
+    {{/* Body content */}}
+    {{- partial "single/thumbnail.html" (dict "page" . "class" "mb-5") -}}
+    {{ .Content }}
+
+    {{/* Inline footer content */}}
+    <div class="row row-cols-2 mt-5 mb-3">
+        <div class="col">
+            {{ with .NextInSection -}}
+                {{ if .OutputFormats.Get "html" -}}
+                    <a class="next" href="{{ .RelPermalink }}">
+                        {{- partial "assets/icon.html" (dict "icon" "fas arrow-left" "spacing" false) }}&nbsp;{{ .LinkTitle }}
+                    </a>
+                {{- end -}}
+            {{ end -}}
+        </div>
+        <div class="col text-end">
+            {{ with .PrevInSection -}}
+                {{ if .OutputFormats.Get "html" -}}
+                    <a class="previous" href="{{ .RelPermalink }}">
+                        {{ .LinkTitle }}&nbsp;{{- partial "assets/icon.html" (dict "icon" "fas arrow-right" "spacing" false) }}
+                    </a>
+                {{- end -}}
+            {{ end -}}
+        </div>
+    </div>
+
     {{- if and .Site.Params.comments.enabled .Params.showComments | default true -}}
         <hr>
         {{ partial "assets/comments.html" . }}
@@ -46,9 +114,11 @@
                     {{ $sidebar | safeHTML }}
                 </div>
                 <div class="col-12 col-{{ $breakpoint.current }}-9 col-{{ $breakpoint.next }}-8 mb-5 p-4">
-                    {{ partial "partials/single-main.html" . }}
+                    <!-- DEBUG Main: Before template call -->
+                    {{ template "partials/single-main.html" . }}
+                    <!-- DEBUG Main: After template call -->
                     <div class="comments mt-5">
-                        {{ partial "partials/comments/discourse.html" . }}
+                        {{ partial "comments/discourse.html" . }}
                     </div>
                 </div>
                 <div class="col col-{{ $breakpoint.current }}-3 col-{{ $breakpoint.next }}-2 d-none d-{{ $breakpoint.current }}-block pt-5">
@@ -58,7 +128,7 @@
         {{ else }}
             <div class="row row-cols-1 row-cols-{{ $breakpoint.current }}-2">
                 <div class="col col-{{ $breakpoint.prev }}-12 col-{{ $breakpoint.current }}-9">
-                    {{ partial "partials/single-main.html" . }}
+                    {{ template "partials/single-main.html" . }}
                 </div>
                 <div class="col col-{{ $breakpoint.current }}-3 d-none d-{{ $breakpoint.current }}-block">
                     {{ $toc | safeHTML }}
@@ -71,7 +141,7 @@
     <div class="container-xxl flex-fill p-4 px-xxl-0">
         <div class="row row-cols-1 row-cols-{{ $breakpoint.current }}-2 row-cols-{{ $breakpoint.next }}-3">
             <div class="col col-{{ $breakpoint.next }}-2 d-none d-{{ $breakpoint.next }}-block sidebar-overflow sticky-top pt-5">
-	            {{ partial "partials/comments/discourse.html" . }}
+	            {{ partial "comments/discourse.html" . }}
             </div>
         </div>
     </div>

@@ -121,7 +121,7 @@
             {{- $dim = printf "%sx%d" $width (int (math.Round (mul (div (float $width) $img.Width) $img.Height))) -}}
         {{- end -}}
 
-        {{- if $portrait -}}{{- $dim = partial "partials/image-portrait.html" (dict "dim" $dim) -}}{{- end -}}
+        {{- if $portrait -}}{{- $dim = partial "image-portrait.html" (dict "dim" $dim) -}}{{- end -}}
 
         {{- if $ratio -}}
             {{- $fallback = ($img.Fill (printf "%s jpg" $dim)) -}}
@@ -166,7 +166,7 @@
         {{- end -}}
 
         {{- if $portrait -}}
-            {{- $dims = partial "partials/image-portrait.html" (dict "dim" $dims) -}}
+            {{- $dims = partial "image-portrait.html" (dict "dim" $dims) -}}
         {{- end -}}
 
         {{- $scaled := "" -}}
@@ -237,13 +237,13 @@
             {{ if $res.mirror }}{{ $innerClass = printf "%s mirrorred" $innerClass }}{{ end }}
         {{ end }}
         {{- if $img -}}
-            {{- $fallback := partial "partials/image-default.html" (dict "img" $img "ratio" $ratio "portrait" $portrait) -}}
+            {{- $fallback := partial "image-default.html" (dict "img" $img "ratio" $ratio "portrait" $portrait) -}}
             {{- if $absoluteURL -}}
                 {{- $fallbackURL = $fallback.Permalink -}}
             {{- else -}}
                 {{- $fallbackURL = $fallback.RelPermalink -}}
             {{- end -}}
-            {{- $imgset = partial "partials/image-scaled.html " (dict "img" $img "ratio" $ratio "portrait" $portrait) -}}
+            {{- $imgset = partial "image-scaled.html " (dict "img" $img "ratio" $ratio "portrait" $portrait) -}}
         {{- end -}}
     {{- end -}}
 
@@ -321,9 +321,9 @@
             "mode" $suffix
             "modes" $modes)
         -}}
-        {{- partial "partials/image-definition.html" $params -}}
+        {{- partial "image-definition.html" $params -}}
     {{- end -}}
 {{ else }}
     {{- $params = merge $params (dict "url" $url) -}}
-    {{- partial "partials/image-definition.html" $params -}}
+    {{- partial "image-definition.html" $params -}}
 {{- end -}}

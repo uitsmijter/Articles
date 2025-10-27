@@ -61,7 +61,7 @@
 {{ $paginator := "" }}
 {{ if $paginate }}
     {{ $paginator = $page.Paginate $pages }}
-    {{ $pages = first $paginator.PageSize (after (mul (sub $paginator.PageNumber 1) $paginator.PageSize) $pages) }}
+    {{ $pages = first $paginator.PagerSize (after (mul (sub $paginator.PageNumber 1) $paginator.PagerSize) $pages) }}
 {{ end }}
 {{ $list := slice }}
 {{ range $index, $element := $pages }}

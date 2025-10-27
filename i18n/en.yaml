@@ -42,7 +42,7 @@
 
 # Sharing
 - id: shareLink
-  translation: "Share via {{ . }}"
+  translation: "Share via"
 - id: shareSystem
   translation: "system"
 - id: copyToClipboard

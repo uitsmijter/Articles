@@ -1,8 +1,10 @@
 # toml-docs-start main
 title = "Uitsmijter"
 copyright = "Uitsmijter 2023."
-paginate = 9
 enableGitInfo = true
+
+[pagination]
+  pagerSize = 9
 # toml-docs-end main
 
 # additional settings
@@ -15,7 +17,8 @@ summaryLength = 20
 
 # prevent build failures when using Hugo's Instagram shortcode due to deprecated Instagram API.
 # See https://github.com/gohugoio/hugo/issues/7228#issuecomment-714490456
-ignoreErrors = ["error-remote-getjson"]
+ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+ignoreLogs = ["warning-partial-superfluous-prefix"]
 
 # toml-docs-start timeout
 timeout = "180s"
@@ -54,7 +57,7 @@ home = ["HTML", "RSS", "REDIR"]
     disabled = false
     simple = true
 
-  [privacy.twitter]
+  [privacy.x]
     disabled = false
     enableDNT = true
     simple = true
@@ -70,7 +73,7 @@ home = ["HTML", "RSS", "REDIR"]
 [services]
   [services.instagram]
     disableInlineCSS = true
-  [services.twitter]
+  [services.x]
     disableInlineCSS = true
   [services.googleAnalytics]
     # ID = "G-xxxxxxxxxx"

@@ -90,6 +90,6 @@
 
         {{- partial "footer/toast-container.html" . -}}
         {{- partialCached "footer/scripts.html" (dict "header" false "page" . "core" true) }}
-        {{- partial "partials/optional-scripts.html" . -}}
+        {{- template "partials/optional-scripts.html" . -}}
     </body>
 </html>
