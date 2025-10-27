@@ -1,3 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>About on Uitsmijter</title><link>https://articles.uitsmijter.io/tags/about/</link><description>Recent content in About on Uitsmijter</description><generator>Hugo</generator><language>en</language><copyright>Uitsmijter 2023.</copyright><lastBuildDate>Thu, 16 Nov 2023 21:10:12 +0100</lastBuildDate><atom:link href="https://articles.uitsmijter.io/tags/about/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to Uitsmijter.</title><link>https://articles.uitsmijter.io/articles/first/</link><pubDate>Sun, 12 Nov 2023 00:00:00 +0000</pubDate><guid>https://articles.uitsmijter.io/articles/first/</guid><description>&lt;p>This blog is super fresh and launched today. Please come back later and subscribe to our
-&lt;a href="https://articles.uitsmijter.io/index.xml">RSS-feed&lt;/a>.&lt;/p>
-&lt;p>While we are writing remarkable articles, you can also check out other resources:&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>About on Uitsmijter</title><link>/tags/about/</link><description>Recent content in About on Uitsmijter</description><generator>Hugo</generator><language>en</language><copyright>Uitsmijter 2023.</copyright><lastBuildDate>Thu, 16 Nov 2023 21:10:12 +0100</lastBuildDate><atom:link href="/tags/about/index.xml" rel="self" type="application/rss+xml"/><item><title>Welcome to Uitsmijter.</title><link>/articles/first/</link><pubDate>Sun, 12 Nov 2023 00:00:00 +0000</pubDate><guid>/articles/first/</guid><description>&lt;p>This blog is super fresh and launched today. Please come back later and subscribe to our
+&lt;a href="/index.xml">RSS-feed&lt;/a>.&lt;/p>
+&lt;p>While we are writing remarkable articles, you can also check out other resources:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://uitsmijter.io">Our Website&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://docs.uitsmijter.io">Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/uitsmijter">Github Organisation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://discourse.uitsmijter.io">Forum&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>See you soon.
+Kris from Uitsmijter&lt;/p></description></item></channel></rss>
