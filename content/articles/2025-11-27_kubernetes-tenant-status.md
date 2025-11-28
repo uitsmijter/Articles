@@ -7,7 +7,7 @@ draft: false
 tags: ["Kubernetes", "Cloud-Native", "Architecture", "DevOps", "SSO"]
 thumbnail:
   url: img/easy.png
-  author: Uitsmijter
+  author: ChatGPT
 ---
 
 ## Why We Built This from Scratch
