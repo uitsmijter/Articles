@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>0.11 on Uitsmijter</title><link>/tags/0.11/</link><description>Recent content in 0.11 on Uitsmijter</description><generator>Hugo</generator><language>en</language><copyright>Uitsmijter 2023.</copyright><lastBuildDate>Tue, 07 Jul 2026 18:06:59 +0200</lastBuildDate><atom:link href="/tags/0.11/index.xml" rel="self" type="application/rss+xml"/><item><title>Signing in without a keyboard — the Device Authorization Grant</title><link>/articles/2026-07-07_device-authorization-grant/</link><pubDate>Tue, 07 Jul 2026 00:00:00 +0000</pubDate><guid>/articles/2026-07-07_device-authorization-grant/</guid><description>&lt;p>We have all been there: a fresh smart TV, a shiny streaming box, and a login screen
+that wants an email address and a password — one painful letter at a time, hunting
+across an on-screen keyboard with a remote control. It is slow, it is error-prone, and
+typing a real password that way feels wrong the moment you start.&lt;/p>
+&lt;p>The web already solved this problem, and with &lt;strong>Uitsmijter 0.11&lt;/strong> the solution comes to
+your own SSO: the &lt;strong>OAuth 2.0 Device Authorization Grant&lt;/strong> (&lt;a href="https://datatracker.ietf.org/doc/html/rfc8628">RFC 8628&lt;/a>),
+often just called the &lt;em>device flow&lt;/em>.&lt;/p></description></item></channel></rss>
